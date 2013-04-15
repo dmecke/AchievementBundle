@@ -1,0 +1,67 @@
+.achievement_container {
+    .achievement_categories {
+        width: 20%;
+        float: left;
+        ul {
+            list-style-type: none;
+            li.achievement_menu {
+                padding: 8px;
+                cursor: pointer;
+            }
+        }
+    }
+    .achievement_content {
+        width: 80%;
+        float: left;
+        .process {
+            border: 1px solid black;
+            height: 24px;
+            position: relative;
+            margin: 8px;
+            cursor: pointer;
+            .bar {
+                position: absolute;
+                left: 0;
+                top: 0;
+                height: 24px;
+                background: #009900;
+            }
+            .label {
+                position: absolute;
+                left: 8px;
+                top: 8px;
+            }
+            .value {
+                position: absolute;
+                right: 8px;
+                top: 8px;
+            }
+        }
+        .achievement {
+            position: relative;
+            border: 1px solid black;
+            height: 80px;
+            margin: 8px;
+            .title {
+                margin: 8px;
+                text-align: center;
+            }
+            .description {
+                margin-left: 80px;
+                margin-right: 8px;
+            }
+            .date {
+                text-align: right;
+                margin-right: 8px;
+            }
+            .image {
+                position: absolute;
+                left: 8px;
+                top: 8px;
+                border: 1px solid black;
+                width: 64px;
+                height: 64px;
+            }
+        }
+    }
+}

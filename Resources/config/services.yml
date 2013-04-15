@@ -1,0 +1,4 @@
+services:
+    cunningsoft.achievement.service:
+        arguments: [%kernel.root_dir%, @doctrine.orm.entity_manager, @translator]
+        class: Cunningsoft\AchievementBundle\Services\AchievementService

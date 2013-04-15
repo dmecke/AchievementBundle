@@ -1,0 +1,36 @@
+{
+    "name": "cunningsoft/achievement-bundle",
+    "type": "symfony-bundle",
+    "description": "Provides an achievement system for Symfony2",
+    "keywords": ["achievement", "game", "browsergame"],
+    "homepage": "https://github.com/dmecke/AchievementBundle",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Daniel Mecke",
+            "email": "daniel.mecke@cunningsoft.de",
+            "homepage": "http://www.cunningsoft.de"
+        },
+        {
+            "name": "Contributors",
+            "homepage": "https://github.com/dmecke/AchievementBundle/contributors"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.0",
+        "symfony/symfony": ">=2.1.0",
+        "doctrine/orm": ">=2.2.0",
+        "sensio/framework-extra-bundle": ">=2.1.0"
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.1.*-dev"
+        }
+    },
+    "autoload": {
+        "psr-0": {
+            "Cunningsoft\\AchievementBundle": ""
+        }
+    },
+    "target-dir": "Cunningsoft/AchievementBundle"
+}
