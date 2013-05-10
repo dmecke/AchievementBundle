@@ -16,7 +16,7 @@ function achievementUnlocked(category, id, name, description)
         resizable: false,
         buttons: {
             'OK': function() {
-                $.post(category + '/' + id + '/markAchievementMessageShown');
+                $.post('/' + category + '/' + id + '/markAchievementMessageShown');
                 $(this).dialog('close');
             }
         },
@@ -29,5 +29,5 @@ function switchAchievementCategory(id)
     $('.achievement_content .category').hide();
     $('#achievement_category_' + id).show();
     $('.achievement_menu').removeClass('selected');
-    $('#achievement_menu' + id).addClass('selected');
+    $('#achievement_menu_' + id).addClass('selected');
 }

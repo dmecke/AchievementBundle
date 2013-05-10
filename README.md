@@ -104,7 +104,7 @@ Installation
     ```twig
     // src/Acme/ProjectBundle/Resources/views/Default/index.html.twig
     // ...
-    {% render 'CunningsoftAchievementBundle:Default:achievements' %}
+    {% render 'CunningsoftAchievementBundle:Default:achievements' with { 'user': app.user } %}
     // ...
     ```
 

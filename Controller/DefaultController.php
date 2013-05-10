@@ -3,6 +3,8 @@
 namespace Cunningsoft\AchievementBundle\Controller;
 
 use Cunningsoft\AchievementBundle\Entity\Achievement;
+use Cunningsoft\AchievementBundle\Services\AchievementService;
+use CunningsoftCustom\AchievementBundle\Entity\UserInterface;
 use Doctrine\ORM\EntityManager;
 use JMS\SecurityExtraBundle\Annotation\Secure;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
@@ -13,14 +15,17 @@ use Symfony\Component\HttpFoundation\Response;
 class DefaultController extends Controller
 {
     /**
+     * @param UserInterface $user
+     *
      * @return array
      *
      * @Template
      */
-    public function achievementsAction()
+    public function achievementsAction(UserInterface $user)
     {
         return array(
-            'achievementService' => $this->get('cunningsoft.achievement.service'),
+            'achievementService' => $this->getAchievementService(),
+            'user' => $user,
         );
     }
 

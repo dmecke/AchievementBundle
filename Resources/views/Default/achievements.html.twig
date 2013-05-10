@@ -1,52 +1,52 @@
 <div class="achievement_container">
     <div class="achievement_categories">
         <ul>
-            <li id="achievementMenuSummary" onclick="switchAchievementCategory('summary')" class="achievement_menu selected"><div>{% trans %}summary{% endtrans %}</div></li>
+            <li id="achievement_menu_summary" onclick="switchAchievementCategory('summary')" class="achievement_menu selected"><div>{% trans %}summary{% endtrans %}</div></li>
 {% for category in achievementService.categories %}
-            <li id="achievementMenu{{ category }}" onclick="switchAchievementCategory('{{ category }}')" class="achievement_menu"><div>{{ achievementService.categoryName(category) }}</div></li>
+            <li id="achievement_menu_{{ category }}" onclick="switchAchievementCategory('{{ category }}')" class="achievement_menu"><div>{{ achievementService.categoryName(category) }}</div></li>
 {% endfor %}
         </ul>
     </div>
     <div class="achievement_content">
         <div id="achievement_category_summary" class="category">
-            <h2>{% trans %}latestAchievements{% endtrans %}</h2>
-{% for achievement in achievementService.latestAchievements(3, app.user) %}
+            <h2 class="latest_achievements">{% trans %}latestAchievements{% endtrans %}</h2>
+{% for achievement in achievementService.latestAchievements(3, user) %}
             <div class="achievement">
                 <div class="title">{{ achievementService.name(achievement.category, achievement.id) }}</div>
                 <div class="description">{{ achievementService.description(achievement.category, achievement.id) }}</div>
                 <div class="date">{{ achievement.insertDate.format('d.m.Y') }}</div>
-                <div class="image" style="background-image: url('bundles/{{ achievement_bundle_name }}/images/achievements/{{ achievement.category }}/{{ achievement.id }}.png')"></div>
+                <div class="image" style="background-image: url('/bundles/{{ achievement_bundle_name }}/images/achievements/{{ achievement.category }}/{{ achievement.id }}.png')"></div>
             </div>
 {% endfor %}
-            <h2>{% trans %}overview{% endtrans %}</h2>
-            <div class="process processOverall">
-                <div class="bar" style="width: {{ achievementService.achievementProcessByCategory('Overall', app.user)*100 }}%"></div>
+            <h2 class="overview">{% trans %}overview{% endtrans %}</h2>
+            <div class="process process_overall">
+                <div class="bar" style="width: {{ achievementService.achievementProcessByCategory('Overall', user)*100 }}%"></div>
                 <div class="label">{% trans %}achievements_earned_overall{% endtrans %}</div>
-                <div class="value">{{ achievementService.numberOfAchievementsByCategory('Overall', app.user) }} / {{ achievementService.numberOfAvailableAchievements('Overall', app.user) }}</div>
+                <div class="value">{{ achievementService.numberOfAchievementsByCategory('Overall', user) }} / {{ achievementService.numberOfAvailableAchievements('Overall', user) }}</div>
             </div>
 {% for category in achievementService.categories %}
-            <div class="process process{{ category }}" onclick="switchAchievementCategory('{{ category }}')">
-                <div class="bar" style="width: {{ achievementService.achievementProcessByCategory(category, app.user)*100 }}%"></div>
+            <div class="process process_{{ category }}" onclick="switchAchievementCategory('{{ category }}')">
+                <div class="bar" style="width: {{ achievementService.achievementProcessByCategory(category, user)*100 }}%"></div>
                 <div class="label">{{ achievementService.categoryName(category) }}</div>
-                <div class="value">{{ achievementService.numberOfAchievementsByCategory(category, app.user) }} / {{ achievementService.numberOfAvailableAchievements(category) }}</div>
+                <div class="value">{{ achievementService.numberOfAchievementsByCategory(category, user) }} / {{ achievementService.numberOfAvailableAchievements(category) }}</div>
             </div>
 {% endfor %}
         </div>
 {% for category in achievementService.categories %}
         <div id="achievement_category_{{ category }}" class="category" style="display: none">
-    {% for achievement in achievementService.achievementsByCategory(category, app.user) %}
+    {% for achievement in achievementService.achievementsByCategory(category, user) %}
             <div class="achievement">
                 <div class="title">{{ achievementService.name(achievement.category, achievement.id) }}</div>
                 <div class="description">{{ achievementService.description(achievement.category, achievement.id) }}</div>
                 <div class="date">{{ achievement.insertDate.format('d.m.Y') }}</div>
-                <div class="image" style="background-image: url('bundles/{{ achievement_bundle_name }}/images/achievements/{{ achievement.category }}/{{ achievement.id }}.png')"></div>
+                <div class="image" style="background-image: url('/bundles/{{ achievement_bundle_name }}/images/achievements/{{ achievement.category }}/{{ achievement.id }}.png')"></div>
             </div>
     {% endfor %}
-    {% for achievementId in achievementService.lockedAchievementsByCategoryAndPlayer(category, app.user) %}
+    {% for achievementId in achievementService.lockedAchievementsByCategoryAndPlayer(category, user) %}
                 <div class="achievement lockedAchievement">
                     <div class="title">{{ achievementService.name(category, achievementId) }}</div>
                     <div class="description">{{ achievementService.description(category, achievementId) }}</div>
-                    <div class="image" style="background-image: url('bundles/cunningsoftachievement/images/achievements/unknown.png')"></div>
+                    <div class="image" style="background-image: url('/bundles/cunningsoftachievement/images/achievements/unknown.png')"></div>
                 </div>
     {% endfor %}
         </div>
