@@ -36,7 +36,7 @@ class CunningsoftAchievementExtension extends Extension
             foreach ($achievements as $achievementId => $achievement) {
                 $definition = new Definition();
                 $definition->setClass($achievement['class']);
-                $definition->setArguments(array(new Reference('cunningsoft.achievement.service')));
+                $definition->setArguments(array(new Reference('cunningsoft.achievement.service'), new Reference('doctrine.orm.entity_manager')));
                 $definition->addTag('kernel.event_listener', array('event' => $achievement['event'], 'method' => $achievement['method']));
                 $container->setDefinition('cunningsoft.achievement.listener.' . $category . '.' . $achievementId, $definition);
             }

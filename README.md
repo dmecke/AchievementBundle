@@ -170,6 +170,7 @@ Installation
     namespace Acme\AchievementBundle\Listener;
 
     use Cunningsoft\AchievementBundle\Services\AchievementService;
+    use Doctrine\ORM\EntityManager;
 
     class AchievementListener
     {
@@ -179,11 +180,18 @@ Installation
         private $achievementService;
 
         /**
-         * @param AchievementService $achievementService
+         * @var EntityManager
          */
-        public function __construct(AchievementService $achievementService)
+        private $entityManager;
+
+        /**
+         * @param AchievementService $achievementService
+         * @param EntityManager $entityManager
+         */
+        public function __construct(AchievementService $achievementService, EntityManager $entityManager)
         {
             $this->achievementService = $achievementService;
+            $this->entityManager = $entityManager;
         }
     }
     ```
