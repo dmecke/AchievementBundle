@@ -224,7 +224,40 @@ For every achievement you want to use, go through these steps. This is an exampl
             method: onCommentPosted // the method that is triggered when the event is dispatched
     ```
 
-2. Create method to check for the achievement
+2. Create an event class as a container for the informations about the event
+
+    ```php
+    // src/Acme/ProjectBundle/Event/CommentEvent.php
+    <?php
+    
+    namespace Acme\ProjectBundle\Event;
+    
+    use Acme\ProjectBundle\Entity\Comment;
+    use Symfony\Component\EventDispatcher\Event;
+    
+    class CommentEvent extends Event
+    {
+        /**
+         * @var Comment
+         */
+        protected $comment;
+    
+        public function __construct(Comment $comment)
+        {
+            $this->comment = $comment;
+        }
+    
+        /**
+         * @return Comment
+         */
+        public function getComment()
+        {
+            return $this->comment;
+        }
+    }
+    ```
+
+3. Create method to check for the achievement
 
     ```php
     // src/Acme/AchievementBundle/Listener/AchievementListener.php
@@ -232,7 +265,7 @@ For every achievement you want to use, go through these steps. This is an exampl
     public function onCommentPosted(CommentEvent $event)
     {
         if (mb_strlen($event->getComment()->getMessage()) >= 100) {
-            $this->achievementService->trigger('community', 'comment_100_characters', $event->getAuthor());
+            $this->achievementService->trigger('community', 'comment_100_characters', $event->getComment()->getAuthor());
         }
     }
     // ...
@@ -259,7 +292,7 @@ For every achievement you want to use, go through these steps. This is an exampl
     public function create()
     {
         // ...
-        $this->get('event_dispatcher')->trigger('comment_posted', new CommentEvent());
+        $this->get('event_dispatcher')->dispatch('comment_posted', new CommentEvent($comment));
     }
     // ...
 
