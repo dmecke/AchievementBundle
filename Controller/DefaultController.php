@@ -4,7 +4,7 @@ namespace Cunningsoft\AchievementBundle\Controller;
 
 use Cunningsoft\AchievementBundle\Entity\Achievement;
 use Cunningsoft\AchievementBundle\Services\AchievementService;
-use CunningsoftCustom\AchievementBundle\Entity\UserInterface;
+use Cunningsoft\AchievementBundle\Entity\UserInterface;
 use Doctrine\ORM\EntityManager;
 use JMS\SecurityExtraBundle\Annotation\Secure;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
