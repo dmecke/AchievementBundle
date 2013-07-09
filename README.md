@@ -104,7 +104,7 @@ Installation
     ```twig
     // src/Acme/ProjectBundle/Resources/views/Default/index.html.twig
     // ...
-    {% render 'CunningsoftAchievementBundle:Default:achievements' with { 'user': app.user } %}
+    {% render(controller('CunningsoftAchievementBundle:Default:achievements', { 'user': app.user } )) %}
     // ...
     ```
 
@@ -113,7 +113,7 @@ Installation
     ```twig
     // src/Acme/ProjectBundle/Resources/views/Default/index.html.twig
     // ...
-    {% render 'CunningsoftAchievementBundle:Default:achievementMessages' %}
+    {% render(controller('CunningsoftAchievementBundle:Default:achievementMessages')) %}
     // ...
     ```
 
