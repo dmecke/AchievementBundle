@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/dmecke/AchievementBundle.svg)](https://travis-ci.org/dmecke/AchievementBundle)
+
 Installation
 ============
 
@@ -9,7 +11,7 @@ Installation
         // ...
         require: {
             // ...
-            "cunningsoft/achievement-bundle": "0.1.*"
+            "cunningsoft/achievement-bundle": "~0.2"
         }
     }
     ```
@@ -298,8 +300,16 @@ For every achievement you want to use, go through these steps. This is an exampl
 
 Now every time a comment is created (in your business logic) an event is triggered. Because of your achievements.yml the achievement system knows to listen for that event and trigger the according method in your AchievementListener. Now the method in your listener can check whether or not the requirements for one or more achievements are met and if so it triggers the booking of the achievement. Of course you may also utilize existing events or use the events for other purposes as well.
 
+
 Changelog
 =========
+* 0.2 (master)
 
-* 0.1 (master)
+* 0.1
 First working version.
+
+
+Notes
+=====
+Please also visit my Open Source Browsergame Project [Open Soccer Star](https://github.com/dmecke/OpenSoccerStar).
+
