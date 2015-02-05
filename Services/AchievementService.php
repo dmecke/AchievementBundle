@@ -8,7 +8,7 @@ use Doctrine\ORM\EntityManager;
 use Symfony\Component\Config\FileLocator;
 use Symfony\Component\Finder\Finder;
 use Symfony\Component\Finder\SplFileInfo;
-use Symfony\Component\Translation\Translator;
+use Symfony\Component\Translation\TranslatorInterface;
 use Symfony\Component\Yaml\Parser;
 
 class AchievementService
@@ -24,16 +24,16 @@ class AchievementService
     private $entityManager;
 
     /**
-     * @var Translator
+     * @var TranslatorInterface
      */
     private $translator;
 
     /**
      * @param string $rootDir
      * @param EntityManager $entityManager
-     * @param Translator $translator
+     * @param TranslatorInterface $translator
      */
-    public function __construct($rootDir, EntityManager $entityManager, Translator $translator)
+    public function __construct($rootDir, EntityManager $entityManager, TranslatorInterface $translator)
     {
         $this->rootDir = $rootDir;
         $this->entityManager = $entityManager;
